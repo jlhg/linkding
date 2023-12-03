@@ -37,6 +37,14 @@ def add_tag_to_query(context, tag_name: str):
 
     return params.urlencode()
 
+@register.simple_tag(takes_context=True)
+def replace_tag_in_query(context, tag_name: str):
+    params = context.request.GET.copy()
+
+    query_string = '#' + tag_name
+    params.__setitem__('q', query_string)
+
+    return params.urlencode()
 
 @register.simple_tag(takes_context=True)
 def remove_tag_from_query(context, tag_name: str):

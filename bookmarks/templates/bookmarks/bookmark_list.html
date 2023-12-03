@@ -33,7 +33,7 @@
           {% if bookmark_item.tag_names %}
             <span>
               {% for tag_name in bookmark_item.tag_names %}
-                <a href="?{% add_tag_to_query tag_name %}">{{ tag_name|hash_tag }}</a>
+                <a href="?{% replace_tag_in_query tag_name %}">{{ tag_name|hash_tag }}</a>
               {% endfor %}
             </span>
           {% endif %}
